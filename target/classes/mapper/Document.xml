@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.mapper.DocumentMapper">
+    <select id="getList" resultType="com.seed.entity.Document">
+        SELECT * FROM document
+    </select>
+
+    <select id="getDocByAuthor" resultType="com.seed.entity.Document">
+        SELECT * FROM document WHERE author like #{author}
+    </select>
+
+    <select id="getDocByTitle" resultType="com.seed.entity.Document">
+        SELECT * FROM document WHERE title like #{title}
+    </select>
+
+    <insert id="insertDocument">
+        INSERT INTO document(title,author,content) VALUES (#{title},#{author},#{content})
+    </insert>
+</mapper>

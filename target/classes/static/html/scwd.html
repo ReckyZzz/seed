@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBliC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<html>
+<head>
+  <meta http-equiv="Content-Language" content="zh-cn">
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+  <title>上传文档</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script type="text/javascript" src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body topmargin="0" leftmargin="0">
+  <div class="mcontainer_box">
+    <div class="head">
+      <table width="954" height="50" border="0">
+        <tr>
+          <td width="473" rowspan="2">种质资源信息库</td>
+          <td width="473">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+    <div class="nav">
+      <ul id="sddm">
+        <li><a href="../index.html" >网站首页</a> </li>
+        <li class="ge"></li>
+        <li><a href="cl.html">其他种子中心</a></li>
+        <li class="ge"></li>
+        <li><a href="kc.html" >库存管理</a></li>
+        <li class="ge"></li>
+        <li><a href="ly.htm">文献检索</a></li>
+        <li class="ge"></li>
+        <li><a href="zs2.htm">移动数据采集</a></li>
+  <li class="ge"></li>
+        <li><a href="gg.html"></a></li>
+        <li class="ge"></li>
+        <li><a href="news.htm">文档中心</a></li>
+      </ul>
+    </div>
+    <div class="banner"><img src="../images/img4.jpg" width="952" height="203" /></div>
+    <div class="leftmain">
+      <div class="pubmainbt">
+        <h4>上传文档</h4>
+      </div>
+      <table width="648" height="375" border="0">
+        <tr>
+          <td width="164" height="60" align="center">输入上传文档的题目</td>
+          <td width="474"><form id="form2" name="form2" method="post" action="">
+            <label for="textfield"></label>
+            <input type="text" name="textfield" id="textfield" />
+          </form></td>
+        </tr>
+        <tr>
+          <td align="center">输入上传文档的作者</td>
+          <td align="left"><form id="form1" name="form1" method="post" action="">
+            <label for="textfield2"></label>
+            <input type="text" name="textfield2" id="textfield2" />
+          </form></td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">上传文档的内容</td>
+          <td valign="middle">
+<!--            <label for="textarea"></label>-->
+            <textarea placeholder="请输入" rows="10" cols="60" id="content"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><form id="form4" name="form4" method="post" action="">
+            <input type="button" name="button" id="button" value="提交" onclick="ajax()"/>
+          </form></td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+    <div class="rightside">
+      <div class="rightsidecon">
+        <map name="FPMap1">
+          <area href="ly.htm" shape="rect" coords="27, 17, 140, 68">
+          <area href="ly.htm" shape="rect" coords="161, 16, 279, 71">
+        </map>
+        <img border="0" src="../images/r1.jpg" usemap="#FPMap1"></div>
+      <div class="rightsidecon">
+        <ul>
+          <li><span>2022-02-23</span><a href="#n1.htm">·国家作物种质库可存150万份</a></li>
+          <li><span>2021-01-112</span><a href="#n2.htm">·52万份种质资源中国种业装上“中国芯”</a></li>
+          <li><span>2021-11-20</span><a href="#n3.htm">·首次查清，江苏省共有林木种质资源22164份</a></li>
+          <li><span>2021-10-23</span><a href="#n4.htm">·我国农作物新收集种质资源1.7万份</a></li>
+          <li><span>2021-05-17</span><a href="#n5.htm">·东川区召开第三次种质资源普查推进会</a></li>
+        </ul>
+      </div>
+      <div class="rightsidecon">
+        <div class="lxwmbg">
+          <p> 地&nbsp; 址：种质资源管理库<br>
+            电&nbsp; 话：11111111111<br>
+            传&nbsp; 真：22222222222<br>
+            联系人：11<br>
+            手&nbsp; 机：12345678999<br>
+            邮&nbsp; 箱：222222@qq.com<br>
+          邮&nbsp; 编：111111 </p>
+        </div>
+      </div>
+    </div>
+    <table border="0" width="952" id="table9" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+      <tr>
+        <td colspan="2" bgcolor="#CCCCCC" height="4"></td>
+      </tr>
+      <tr>
+        <td colspan="2" height="40" bgcolor="#035C88" align="center"><font color="#FFFFFF"> 种质资源信息网</font></td>
+      </tr>
+    </table>
+  </div>
+  <script type="text/javascript">
+    function ajax() {
+      var title = document.getElementById("textfield").value
+      var author = document.getElementById("textfield2").value
+      var content = document.getElementById("content").value
+      console.log("title:",title)
+      console.log("author:",author)
+      console.log("content:",content)
+
+      $.ajax({
+        url: "../insert",
+        type: "POST",
+        data:{
+          title: title,
+          author: author,
+          content: content
+        },
+        dataType:"json",
+        success:function (result) {
+          if (result > 0) {
+            alert("添加成功");
+          }
+        },
+        error:function (request,status,error) {
+          alert("系统异常！");
+        }
+      });
+    }
+  </script>
+  </body>
+</html>
